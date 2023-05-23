@@ -7,14 +7,28 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(contact $contact)
+    {
+        $this->contact = $contact;
+    }
+
     public function index()
     {
-        //
+        $contacts = $this->contact->all();
+        return view('app.contacts.indexContact', compact('contacts'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Integer
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+
+        $contact = $this->contact->find($id);
+        return view('app.contacts.showContact', ['contact' => $contact]);
     }
 
     /**
@@ -24,7 +38,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.contacts.createContact');
     }
 
     /**
@@ -35,51 +49,75 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required|min:5|max:100',
+            'contact' => 'required|unique:contacts|min:14|max:15',
+            'email' => 'required|unique:contacts'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Contact  $contact
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Contact $contact)
-    {
-        //
+        $contact = $request->all();     
+
+        try {
+            $contact = Contact::create($contact);
+            return redirect('app/contacts')->with('success', 'Operação realizada com Sucesso!');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('error', 'Erro ao tentar realizar Operação!'. $ex);
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Contact  $contact
+     * @param Integer
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contact $contact)
+    public function edit($id)
     {
-        //
+        $contact = $this->contact->find($id);
+        return view('app.contacts.editContact', ['contact' => $contact]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Contact  $contact
+     * @param Integer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:5|max:100',
+            'contact' => 'required|unique:contacts|min:14|max:15',
+            'email' => 'required|unique:contacts'
+        ]);
+        
+        $contact = Contact::find($id);
+        $input = $request->all();    
+
+        try {
+            $contact->fill($input)->save();
+            return redirect('app/contacts')->with('success', 'Operação realizada com Sucesso!');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('error', 'Erro ao tentar realizar Operação!');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Contact  $contact
+     * @param  \Illuminate\Http\Request  $request
+     * @param Integer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy($id)
     {
-        //
+        $contact = $this->contact->find($id);
+
+        try {
+            $contact->delete();
+            return redirect('app/contacts')->with('success', 'Operação realizada com Sucesso!');
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return redirect()->back()->with('error', 'Erro ao tentar realizar Operação!');
+        }
     }
 }

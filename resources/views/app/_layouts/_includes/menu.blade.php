@@ -24,7 +24,7 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Home </a>
-                    <li><a href="{{ route('dashboard') }}"><i class="fa fa-user"></i> Contacts </a></li>
+                    <li><a href="{{ route('indexContact') }}"><i class="fa fa-user"></i> Contacts </a></li>
                 </ul>
 
             </div>

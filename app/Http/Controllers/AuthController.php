@@ -21,7 +21,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unthorized!'], 401);
+            return response()->json(['error' => 'Não autorizado!'], 401);
         }
         return $this->respondWithToken($token);
     }

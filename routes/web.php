@@ -3,42 +3,27 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ContaController;
-use App\Http\Controllers\DepositoController;
-use App\Http\Controllers\SaqueController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', [UserController::class, 'index'])->name('index');
 Route::get('/register', [UserController::class, 'indexRegister'])->name('indexRegister');
-Route::post('/auth', [LoginController::class, 'auth'])->name('auth'); //Implementando
-Route::post('/', [UserController::class, 'register'])->name('register'); //Implementando
+Route::post('/auth', [LoginController::class, 'auth'])->name('auth'); 
+Route::post('/', [UserController::class, 'register'])->name('register'); 
 
 Route::prefix('/app')->middleware('auth')->group(function () {
     //Logout
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     //Dashboard
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');  
+     
+   //Contacts
+   Route::get('/contacts', [ContactController::class, 'index'])->name('indexContact');
+   Route::get('/contacts/{id}/show/', [ContactController::class, 'show'])->name('show');
+   Route::get('/contacts/create', [ContactController::class, 'create'])->name('create');
+   Route::post('/contacts', [ContactController::class, 'store'])->name('store');
+   Route::get('/contacts/{id}/edit/', [ContactController::class, 'edit'])->name('edit');
+   Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('update');
+   Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('delete');    
 
-    //Profile
-    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-
-    //Users
-    Route::get('/users/edit/', [UserController::class, 'edit'])->name('editUser');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('updateUser');
-
-    //Contas    
-    Route::get('/contas/create', [ContaController::class, 'create'])->name('createConta');
-    Route::post('/contas', [ContaController::class, 'store'])->name('storeConta');
-    Route::delete('/contas/{id}', [ContaController::class, 'destroy'])->name('deleteConta');
-    Route::get('/contas/gerarPdf/', [ContaController::class, 'gerarPdf'])->name('gerarPdf');
-    Route::get('/graficos', [ContaController::class, 'graficos'])->name('graficos');
-    Route::get('/relatorios', [ContaController::class, 'relatorios'])->name('relatorios');
-
-    //Depositos    
-    Route::get('/depositos/create', [DepositoController::class, 'create'])->name('createDeposito');
-    Route::post('/depositos', [DepositoController::class, 'store'])->name('storeDeposito');
-
-    //Saques    
-    Route::get('/saques/create', [SaqueController::class, 'create'])->name('createSaque');
-    Route::post('/saques', [SaqueController::class, 'store'])->name('storeSaque');
-});
+    });

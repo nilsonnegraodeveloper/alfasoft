@@ -3,11 +3,11 @@
 @section('content')
 
 @section('title')
-<h4 class="page-title">CLIENTES</h4>
+<h4 class="page-title">CONTACTS</h4>
 @endsection
 
 @section('sub_title')
-<h2>Lista de Clientes<small></small></h2>
+<h2>INDEX<small></small></h2>
 @endsection
 
 <div class="row">
@@ -15,44 +15,44 @@
         <div class="card-box table-responsive">
             <div class="item form-group">
                 <div class="pull-left">
-                    <a href="{{ route ('app.clientes.createCliente') }}" class="btn btn-info">
-                        <i class="fa fa-plus"></i> Novo</a>
-                    <a href="{{ route ('app.dashboard') }}" class="btn btn-info">
-                        <i class="fa fa-arrow-left"></i> Voltar</a>
+                    <a href="{{ route ('create') }}" class="btn btn-info">
+                        <i class="fa fa-plus"></i> New</a>
+                    <a href="{{ route ('dashboard') }}" class="btn btn-info">
+                        <i class="fa fa-arrow-left"></i> Back</a>
                     <br />
                 </div>
             </div>
             <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
+                        <th>Name</th>
+                        <th>Contact</th>
                         <th>E-mail</th>
-                        <th width="10%">Visualizar</th>
-                        <th width="7%">Editar</th>
-                        <th width="7%">Excluir</th>
+                        <th width="7%">View</th>
+                        <th width="7%">Edit</th>
+                        <th width="7%">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($clientes as $cliente)
+                    @foreach ($contacts as $contact)
                     <tr>
-                        <td>{{ $cliente->nome }}</td>
-                        <td>{{ $cliente->cpf }}</td>
-                        <td>{{ $cliente->email }}</td>
-                        <td style="text-align:center"><a href="/app/clientes/{{ $cliente->id }}/show/">
-                                <i class="fa fa-eye" title="Visualizar clientee"></i></a>
+                        <td>{{ $contact->name }}</td>
+                        <td>{{ $contact->contact }}</td>
+                        <td>{{ $contact->email }}</td>
+                        <td style="text-align:center"><a href="/app/contacts/{{ $contact->id }}/show/">
+                                <i class="fa fa-eye" title="View Contact"></i></a>
                             </a></td>
 
-                        <td style="text-align:center"><a href="/app/clientes/{{ $cliente->id }}/edit/">
-                                <i class="fa fa-edit" title="Editar clientee"></i></a>
+                        <td style="text-align:center"><a href="/app/contacts/{{ $contact->id }}/edit/">
+                                <i class="fa fa-edit" title="Edit Contact"></i></a>
                         </td>
 
                         <td style="text-align:center">
-                            <form action="/app/clientes/{{ $cliente->id }}" method="POST">
+                            <form action="/app/contacts/{{ $contact->id }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class=""><a href="/app/clientes/{{ $cliente->id }}">
-                                        <i class="fa fa-trash" onclick="return confirm('Deseja realmente Deletar este cliente?');" title="Deletar cliente"></i></a></button>
+                                <button type="submit" class=""><a href="/app/contacts/{{ $contact->id }}">
+                                        <i class="fa fa-trash" onclick="return confirm('Are you Sure?');" title="Delet Contact"></i></a></button>
                             </form>
                         </td>
                     </tr>

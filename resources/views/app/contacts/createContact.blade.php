@@ -3,50 +3,52 @@
 @section('content')
 
 @section('title')    
-      <h4 class="page-title">CONTAS</h4>
+      <h4 class="page-title">CONTACTS</h4>
 @endsection
 
 @section('sub_title')
-<h2>Nova Conta<small></small></h2>
+<h2>New Contact<small></small></h2>
 @endsection
 
-  <form method="POST" action="{{ route('storeConta') }}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-    @csrf
-
-    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}" />
-
+  <form method="POST" action="{{ route('store') }}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+    @csrf  
+    
     <div class="item form-group">
-        <label class="col-form-label col-md-3 col-sm-3 label-align" for="nome">Tipo de Conta <span class="required">*</span>
+        <label for="name" class="col-form-label col-md-3 col-sm-3 label-align">Name <span class="required">*</span>
         </label>
-        <div class="col-md-6 col-sm-6 ">            
-            <select name="tipo_conta_id" class="form-control" value="{{ old('tipo_conta_id') }}" required="">
-                <option value=""> -- Selecione um Tipo de Conta -- </option>
-                @foreach ($tipoContas as $tipoConta)
-                    <option value="{{ $tipoConta->id }}">{{ $tipoConta->nome }}</option>
-                @endforeach
-            </select>        
+        <div class="col-md-6 col-sm-6 ">
+            <input type="text" value="{{ old('name') }}" name="name" maxlenght="100" class="form-control" required=""/>
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="col-form-label col-md-3 col-sm-3 label-align" for="nome">Valor (R$) <span class="required">*</span>
+        <label for="contact" class="col-form-label col-md-3 col-sm-3 label-align">Contact <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 ">
-            <input type="text" id="money" value="{{ old('saldo') }}" name="saldo" maxlenght="20" class="form-control" required=""/>
+            <input type="tel" value="{{ old('contact') }}" id="contact" name="contact" onkeyup="mascara(this, mtel);" maxlenght="15" class="form-control" required=""/>
+        </div>
+    </div>
+
+    <div class="item form-group">
+        <label for="email" class="col-form-label col-md-3 col-sm-3 label-align">E-mail <span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 ">
+            <input type="email" value="{{ old('email') }}" id="email" name="email" maxlenght="200" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="mail@examplo.com, mail@examplo.com.br" class="form-control" required="" />
         </div>
     </div>
 
     <div class="ln_solid"></div>
     
+    <br />
+    
     <div class="item form-group">
         <div class="col-md-6 col-sm-6 offset-md-3">
         <div style="text-align:center">
         <button type="submit" name="salvar" class="btn btn-info">
-                <i class="fa fa-save"></i> Salvar
+                <i class="fa fa-save"></i> Save
             </button>
 
             <a href="{{ route('dashboard') }}" class="btn btn-info">
-                <i class="fa fa-arrow-left"></i> Voltar</a>
+                <i class="fa fa-arrow-left"></i> Back</a>
         </div>            
         </div>
     </div>

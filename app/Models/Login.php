@@ -12,7 +12,6 @@ class Login extends Model
     protected $fillable = [
         'name',
         'email',
-        'password',
-        'cpf'
+        'password'
     ];
 }

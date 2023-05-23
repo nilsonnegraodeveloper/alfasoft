@@ -32,11 +32,7 @@
                                     {{ auth()->user()->email }}
                                 </li>
                             </ul>
-                            <a href="{{ route ('dashboard') }}" class="btn btn-info">
-                                <i class="fa fa-arrow-left"></i> Back</a>
-
-                            <a href="/app/users/edit/" class="btn btn-info">
-                                <i class="fa fa-edit" title="Edit Data"></i> Edit Data</a>
+                            
                             <br />
 
                         </div>

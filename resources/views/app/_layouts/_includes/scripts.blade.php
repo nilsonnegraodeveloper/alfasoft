@@ -2,23 +2,10 @@
 <script src="{{ asset('static/vendors/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('static/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-<!-- DateJS -->
-<script src="{{ asset('static/vendors/DateJS/build/date.js') }}"></script>
-<!-- bootstrap-daterangepicker -->
-<script src="{{ asset('static/vendors/moment/min/moment.min.js') }}"></script>
-<script src="{{ asset('static/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 <!-- Datatables -->
-<script src="{{ asset('static/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
-<script src="{{ asset('static/vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('static/build/js/custom.min.js') }}"></script>
+<!-- Mask Phone 9 Digits-->
+<script src="{{ asset('static/build/js/mask-phone-9-digit.js') }}"></script>
