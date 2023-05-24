@@ -32,6 +32,19 @@ class ContactController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param Integer
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+
+        $contact = $this->contact->find($id);
+        return view('app.contacts.deleteContact', ['contact' => $contact]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

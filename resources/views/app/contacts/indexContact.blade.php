@@ -48,12 +48,8 @@
                         </td>
 
                         <td style="text-align:center">
-                            <form action="/app/contacts/{{ $contact->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class=""><a href="/app/contacts/{{ $contact->id }}">
-                                        <i class="fa fa-trash" onclick="return confirm('Are you Sure?');" title="Delet Contact"></i></a></button>
-                            </form>
+                            <a href="/app/contacts/{{ $contact->id }}/delete/">
+                                <i class="fa fa-trash" title="Delete Contact"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -1,17 +1,19 @@
 @extends('app._layouts.base')
 
-@section('title')
-<h4 class="page-title">CONTACTS</h4>
+@section('content')   
+
+@section('title') 
+    <h4 class="page-title">CONTACTS</h4>
 @endsection
 
-@section('sub_title')
-<h2>View Contact<small></small></h2>
+@section('sub_title')   
+<h2>Delete Contact<small></small></h2>
 @endsection
 
-@section('content')
-
-<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-
+<form method="POST" action="/app/contacts/{{ $contact->id }}" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+    @csrf
+    @method('DELETE')
+   
     <div class="item form-group">
         <label for="name" class="col-form-label col-md-3 col-sm-3 label-align">Name</label>
         <div class="col-md-6 col-sm-6 ">
@@ -37,19 +39,17 @@
 
     <div class="item form-group">
         <div class="col-md-6 col-sm-6 offset-md-3">
-            <div style="text-align:center">
-                <a href="{{ route('indexContact') }}" class="btn btn-info">
-                    <i class="fa fa-arrow-left"></i> Back</a>
+        <div style="text-align:center">
 
-                <a href="/app/contacts/{{ $contact->id }}/edit/" class="btn btn-warning">
-                    <i class="fa fa-edit"></i> Edit</a>
+        <button type="submit" name="save" class="btn btn-danger" onclick="return confirm('Are you Sure?');">
+                <i class="fa fa-trash"></i> Delete
+            </button>
 
-                <a href="/app/contacts/{{ $contact->id }}/delete/" class="btn btn-danger">
-                    <i class="fa fa-trash"></i> Delete</a>
-            </div>
+            <a href="{{ route('indexContact') }}" class="btn btn-info">
+                <i class="fa fa-arrow-left"></i> Back</a>
+        </div>            
         </div>
-
-    </div>
+    </div>    
 </form>
 
 @endsection

@@ -24,6 +24,7 @@ Route::prefix('/app')->middleware('auth')->group(function () {
    Route::post('/contacts', [ContactController::class, 'store'])->name('store');
    Route::get('/contacts/{id}/edit/', [ContactController::class, 'edit'])->name('edit');
    Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('update');
-   Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('delete');    
+   Route::get('/contacts/{id}/delete/', [ContactController::class, 'delete'])->name('delete');
+   Route::delete('/contacts/{id}', [ContactController::class, 'destroy'])->name('destroy');    
 
     });
