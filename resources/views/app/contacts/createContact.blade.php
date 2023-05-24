@@ -25,7 +25,7 @@
         <label for="contact" class="col-form-label col-md-3 col-sm-3 label-align">Contact <span class="required">*</span>
         </label>
         <div class="col-md-6 col-sm-6 ">
-            <input type="tel" value="{{ old('contact') }}" id="contact" name="contact" onkeyup="mascara(this, mtel);" maxlenght="15" class="form-control" required=""/>
+            <input type="text" value="{{ old('contact') }}" id="contact" name="contact" maxlenght="15" class="form-control phone" required=""/>
         </div>
     </div>
 
