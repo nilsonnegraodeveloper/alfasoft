@@ -9,7 +9,7 @@
 - name: warning
   hex: "#ffc107"
 - name: info
-  hex: "#17a2b8"
+  hex: "#32b4e4"
 - name: light
   hex: "#f8f9fa"
 - name: dark

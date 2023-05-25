@@ -31,7 +31,7 @@ class HtmlFormatter extends NormalizerFormatter
     protected $logLevels = [
         Logger::DEBUG     => '#CCCCCC',
         Logger::INFO      => '#28A745',
-        Logger::NOTICE    => '#17A2B8',
+        Logger::NOTICE    => '#32b4e4',
         Logger::WARNING   => '#FFC107',
         Logger::ERROR     => '#FD7E14',
         Logger::CRITICAL  => '#DC3545',
