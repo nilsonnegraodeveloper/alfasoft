@@ -5,7 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 
-Route::get('/', [UserController::class, 'index'])->name('index');
+Route::get('/', [ContactController::class, 'index'])->name('index');
+Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [UserController::class, 'indexRegister'])->name('indexRegister');
 Route::post('/auth', [LoginController::class, 'auth'])->name('auth'); 
 Route::post('/', [UserController::class, 'register'])->name('register'); 
@@ -18,7 +19,7 @@ Route::prefix('/app')->middleware('auth')->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');  
      
    //Contacts
-   Route::get('/contacts', [ContactController::class, 'index'])->name('indexContact');
+   Route::get('/contacts', [ContactController::class, 'contacts'])->name('indexContact');
    Route::get('/contacts/{id}/show/', [ContactController::class, 'show'])->name('show');
    Route::get('/contacts/create', [ContactController::class, 'create'])->name('create');
    Route::post('/contacts', [ContactController::class, 'store'])->name('store');

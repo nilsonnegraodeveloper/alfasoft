@@ -35,7 +35,11 @@
                         </div>
 
                         <div class="flex-box">
-                            <input type="submit" name="validar" id="validar" class="btn btn-success" value="Register" onClick="valida()" />
+                            <!-- <input type="submit" name="validar" id="validar" class="btn btn-info" value="Register" /> -->
+
+                            <button name="login" type="submit" class="btn btn-info" value="1">
+                                <i class="fa fa-check-circle"></i> Register
+                            </button>
                         </div>
 
                         <div class="clearfix"></div>

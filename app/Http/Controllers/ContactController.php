@@ -15,8 +15,14 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = $this->contact->all();
-        return view('app.contacts.indexContact', compact('contacts'));
+        return view('index', compact('contacts'));
     }
+
+    public function contacts()
+    {
+        $contacts = $this->contact->all();
+        return view('app.contacts.indexContact', compact('contacts'));
+    }    
 
     /**
      * Display the specified resource.

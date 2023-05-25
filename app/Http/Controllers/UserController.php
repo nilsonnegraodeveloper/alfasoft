@@ -15,9 +15,9 @@ class UserController extends Controller
         $this->user = $user;
     }
 
-    public function index()
+    public function login()
     {
-        return view('index');
+        return view('login');
     }
 
     public function indexRegister()
